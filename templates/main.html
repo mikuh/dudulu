@@ -14,31 +14,32 @@
         {% block header %}
         <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-dark">
             <div class="container">
-          <a class="navbar-brand" style="color:white" href="#">dudulu</a>
+          <a class="navbar-brand" style="color:white" href="#">DeepGuess</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-item nav-link" href="#">文章 <span class="sr-only">(current)</span></a>
-              <a class="nav-item nav-link active" href="#">教程</a>
-              <a class="nav-item nav-link" href="#">图片</a>
-              <a class="nav-item nav-link" href="#">动画</a>
-              <a class="nav-item nav-link" href="#">轻小说</a>
+              <a class="nav-item nav-link " href="#">文章<span class="sr-only">(current)</span></a>
+              <a class="nav-item nav-link " href="#">教程</a>
+              <a class="nav-item nav-link" href="#">股票预测</a>
+              <a class="nav-item nav-link" href="#">知识图谱</a>
+              <a class="nav-item nav-link" href="#">区块链</a>
             </div>
               <div class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" style="color:white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <a class="nav-link dropdown-toggle active" style="color:white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       AI应用
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                       <a class="dropdown-item" href="#">宠物识别</a>
-                      <a class="dropdown-item" href="#">角色识别</a>
+                      <a class="dropdown-item" href="#">头像匹配</a>
                       <a class="dropdown-item" href="#">动画识别</a>
                     </div>
               </div>
           </div>
             <div class="navbar-nav pull-right">
-               <button class="btn btn-sm align-middle btn-outline-secondary" type="button">登录</button>
+                <a class="btn btn-sm align-middle btn-outline-secondary" href="#" role="button">登录</a>
+               <!--<button class="btn btn-sm align-middle btn-outline-secondary" type="button">登录</button>-->
             </div>
                 </div>
         </nav>
@@ -49,10 +50,10 @@
     </content>
     <footer>
         {% block footer %}
-        <div style="margin-bottom: 80px"> </div>
+        <div style="margin-bottom: 100px"> </div>
             <footer class="footer">
               <div class="container">
-                <span class="text-muted">Place sticky footer content here.</span>
+                <span class="text-muted"><a href="/">deepguess.info</a>&copy;2017 Powered by geb </span>
               </div>
             </footer>
         {% end %}
