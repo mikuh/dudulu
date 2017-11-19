@@ -1,0 +1,38 @@
+{% extends "main.html" %}
+
+
+{% block left %}
+<ul class="layui-nav layui-nav-tree"  lay-filter="test">
+    <li class="layui-nav-item layui-nav-itemed">
+      <a class="" href="javascript:;">账户管理</a>
+      <dl class="layui-nav-child">
+        <dd><a href="javascript:;">基本信息</a></dd>
+        <dd><a href="javascript:;">用户资料</a></dd>
+        <dd><a href="javascript:;">推荐好友</a></dd>
+      </dl>
+    </li>
+    <li class="layui-nav-item">
+      <a href="javascript:;">消费中心</a>
+      <dl class="layui-nav-child">
+        <dd><a href="javascript:;">账户充值</a></dd>
+        <dd><a href="javascript:;">充值记录</a></dd>
+        <dd><a href="javascript:;">消费记录</a></dd>
+      </dl>
+    </li>
+    <li class="layui-nav-item">
+        <a href="javascript:;">API管理</a>
+        <dl class="layui-nav-child">
+        <dd><a href="javascript:;">API购买</a></dd>
+        <dd><a href="javascript:;">已购买</a></dd>
+        <dd><a href="javascript:;">接入文档</a></dd>
+      </dl>
+    </li>
+</ul>
+{% end %}
+
+{% block body %}
+<div>
+    hello world.
+</div>
+
+{% end %}

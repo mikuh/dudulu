@@ -1,7 +1,7 @@
 import tornado.web
 import os
-from uri import handlers
-
+from uri import uris
+import motor
 
 
 
@@ -9,7 +9,7 @@ from uri import handlers
 class Application(tornado.web.Application):
     def __init__(self, debug):
         settings = {
-            'handlers': handlers,
+            'handlers': uris,
             'template_path': os.path.join(os.path.dirname(__file__), "templates"),
             'static_path': os.path.join(os.path.dirname(__file__), "static"),
             'cookie_secret': "egEMV+mTSr6475tdduxTYI3i9Inl8UTOgrGTAoQiqLc=",
@@ -17,6 +17,8 @@ class Application(tornado.web.Application):
             'login_url': "/login",
         }
         settings.update({'debug': debug})
+        client = motor.motor_tornado.MotorClient('127.0.0.1', 27017)
+        self.async_db = client.deepguess
         # self.graph = Graph("bolt://127.0.0.1:7687", username="neo4j", password="deep")  # neo4j连接
         tornado.web.Application.__init__(self, **settings)
 

@@ -1,5 +1,9 @@
 import tornado.web
-
-class IndexHandler(tornado.web.RequestHandler):
+from handlers import base
+class IndexHandler(base.BaseHandler):
     def get(self):
-        self.render('index.html', title="dudulu", footer_text="Footer goes here")
+        if self.get_current_user():
+            user_info = self.get_current_user()
+        else:
+            user_info = ''
+        self.render('index.html', title="DeepGuess", user_info=user_info)

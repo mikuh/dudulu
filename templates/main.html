@@ -37,10 +37,24 @@
                     </div>
               </div>
           </div>
-            <div class="navbar-nav pull-right">
-                <a class="btn btn-sm align-middle btn-outline-secondary" href="#" role="button">登录</a>
-               <!--<button class="btn btn-sm align-middle btn-outline-secondary" type="button">登录</button>-->
+
+            {% if user_info %}
+                 <div class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle active" style="color:white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <img class="avatar float-left mr-1" src="/static/images/avatars/{{user_info}}.png" style="width: 20px; height: 20px;" class="layui-nav-img">
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="/console">个人中心</a>
+                      <a class="dropdown-item" href="/logout">退出登录</a>
+                    </div>
+              </div>
+
+            {% else %}
+            <div class="navbar-nav pull-right" id="user_button">
+                <a class="btn btn-sm align-middle btn-outline-secondary" href="/login" role="button">登录</a>
             </div>
+            {% end %}
+
                 </div>
         </nav>
          {% end %}
@@ -58,5 +72,6 @@
             </footer>
         {% end %}
     </footer>
+
 </body>
 </html>

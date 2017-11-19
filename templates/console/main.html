@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>DeepGuess-个人中心</title>
+  <link rel="stylesheet" href="{{ static_url('css/layui.css')}}">
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo"><a href="/" style="color: #009688">DeepGuess.info</a></div>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+      <li class="layui-nav-item"><a href="">个人中心</a></li>
+      <li class="layui-nav-item"><a href="">联系站长</a></li>
+      <li class="layui-nav-item"><button class="layui-btn">查看消息<span class="layui-badge layui-bg-gray">1</span></button></li>
+    </ul>
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <img src="/static/images/avatars/{{user_info}}.png" class="layui-nav-img">
+          {{user_info}}
+        </a>
+        <dl class="layui-nav-child">
+          <dd><a href="">基本信息</a></dd>
+          <dd><a href="">实名认证</a></dd>
+        </dl>
+      </li>
+      <li class="layui-nav-item"><a href="/logout">退出</a></li>
+    </ul>
+  </div>
+
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      {% block left %}
+      {% end %}
+    </div>
+  </div>
+
+  <div class="layui-body">
+    <!-- 内容主体区域 -->
+        <content>
+        {% block body %}{% end %}
+        </content>
+    <div style="padding: 15px;">内容主体区域</div>
+  </div>
+
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    © deepguess.info - Powered by Geb.
+  </div>
+</div>
+<script src="{{ static_url('layui.js')}}"></script>
+<script>
+//JavaScript代码区域
+layui.use('element', function(){
+  var element = layui.element;
+
+});
+</script>
+</body>
+</html>
