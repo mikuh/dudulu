@@ -15,20 +15,20 @@
    <div class="container">
        <h3>最新发表</h3>
 
-        {% for i in range(5)%}
+        {% for article in articles %}
 
           <div class="row" style="background: white; box-shadow: 3px 3px #bfbfbf; border: 1px solid #656161; border-radius:7px; padding: 10px 5px 10px 0px;margin-top: 15px;">
               <div class="col-xs-12 col-sm-12 col-md-3">
                 <a href="#" class="thumbnail" style="padding-right: 20px ">
-                  <img src="{{ static_url('images/s.jpg') }}" alt="...">
+                  <img src="/static/images/{{ article['view'] }}" alt="...">
                 </a>
               </div>
               <div class="col-xs-12 col-sm-12 col-md-9">
                   <a href="#" style="color: #2d2d2d">
-                  <h3 style="margin-top: 10px;">深入理解LSTM</h3>
-                  <p style="margin-top: 10px;">长短期记忆（Long Short-Term Memory, LSTM）是一种时间递归神经网络(RNN)[1]，论文首次发表于1997年。由于独特的设计结构，LSTM适合于处理和预测时间序列中间隔和延迟非常长的重要事件。</p>
+                  <h3 style="margin-top: 10px;">{{ article['title'] }}</h3>
+                  <p style="margin-top: 10px;">{{ article['body'] }}</p>
                   </a>
-                  <div style="float: right"><span class="badge badge-info">Update at 2017/11/17 22:45</span></div>
+                  <div style="float: right"><span class="badge badge-info">Update at {{ article['publish_at'] }}</span></div>
               </div>
           </div>
 

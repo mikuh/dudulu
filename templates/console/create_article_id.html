@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Hello, world!</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+      <link href="/open-iconic/font/css/open-iconic.css" rel="stylesheet">
+    <!-- markdowm -->
+      <link rel="stylesheet" href="/static/editor.md-master/css/editormd.min.css" />
+      <style>a, a:hover { text-decoration: none; }</style>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <h1 style="padding-left: 10px"><a href="/" style="color: black; ">Deep Guess</a></h1>
+    <hr>
+    <div class="row container-fluid">
+      <div class="col-md-2">
+
+          <div class="list-group">
+              <strong><a href="/article/create/new" style="color: black; margin-left: 15px;"><img src="/static/images/ic_note_add_black_24px.svg" style="vertical-align:middle">新建文章</a></strong><br>
+              {% for x in id_titles %}
+                <a href="/article/create/{{ x[0] }}" class="list-group-item" {% if x[0]== id %} style="color: black" {% end %}>{{ x[1] }}</a>
+              {% end %}
+        </div>
+      </div>
+      <div class="col-md-10">
+
+        <form  method="post" enctype="multipart/form-data" id="form">
+             {% raw xsrf_form_html() %}
+             <input type="hidden" value="{{ id }}" name="id">
+              <div class="form-group row">
+                <label for="title" class="col-sm-1 col-md-1 col-form-label">标题</label>
+                <div class="col-sm-11 col-md-11">
+                  <input type="text" name="title"  value="{{ document['title'] }}" class="form-control" id="title" required>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="tag" class="col-sm-1 col-md-1 col-form-label">添加标签</label>
+                <div class="col-sm-11 col-md-11">
+                  <input type="lsit" name="tags" value="{{ document['tags'] }}" class="form-control" id="tag" required>
+                </div>
+              </div>
+                <div class="form-group row">
+                <label for="img" class="col-sm-1 col-md-1 col-form-label">添加展示图</label>
+                <div class="col-sm-6 col-md-6">
+                  <input type="file" name="view" style="width: 100%" class="form-control" id="img" required>
+                </div>
+
+                 <div class="col-sm-5 col-md-5">
+                    <a class="btn btn-primary" href="javascript:submit_frm('0')" role="button">保存文章</a>
+                    <a class="btn btn-success" href="javascript:submit_frm('1')" role="button" style="margin-left: 30px">立即发布</a>
+                </div>
+                <br><br>
+
+              <div id="editormd">
+                <textarea style="display:none;" name="body">{{ document['body'] }}</textarea>
+              </div>
+
+            </div>
+        </form>
+
+
+      </div>
+    </div>
+
+<script src="/static/editor.md-master/editormd.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        var editor = editormd("editormd", {
+            height:640,
+            path : "/static/editor.md-master/lib/" // Autoload modules mode, codemirror, marked... dependents libs path
+        });
+
+    });
+
+    function submit_frm(x){
+            var frm = document.getElementById("form");
+            frm.action = "/article/create?st="+ x;
+            frm.submit();
+        }
+</script>
+
+  </body>
+</html>
